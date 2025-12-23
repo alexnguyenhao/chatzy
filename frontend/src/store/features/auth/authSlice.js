@@ -4,8 +4,6 @@ const initialState = {
   user: null,
   token: null,
   isAuthenticated: false,
-  loading: false,
-  error: null,
 };
 
 export const authSlice = createSlice({
@@ -13,9 +11,8 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { user, token } = action.payload;
-      state.user = user;
-      state.token = token;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
       state.isAuthenticated = true;
     },
     logout: (state) => {
@@ -23,21 +20,11 @@ export const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
     },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
   },
 });
 
-export const { setCredentials, logout, setLoading, setError } =
-  authSlice.actions;
-
+export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;
 
-// Selectors
 export const selectCurrentUser = (state) => state.auth.user;
-export const selectCurrentToken = (state) => state.auth.token;
 export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;

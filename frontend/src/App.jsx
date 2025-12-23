@@ -9,13 +9,10 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 function App() {
   return (
     <Routes>
-      {/* Main Layout Routes */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
-        {/* Add more protected routes here */}
       </Route>
 
-      {/* Auth Routes (No Layout) */}
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
